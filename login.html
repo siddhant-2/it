@@ -1,0 +1,68 @@
+<html>
+	<head>
+	<title>Election</title>
+		<style>
+		body{
+			background-color:"#f0f0f0";
+			text-align:center;
+		}
+		form {border: 3px solid #f1f1f1;}
+		.box{
+			width:20%;
+			margin:auto;
+			padding:14px;
+			text-align:left;
+			font-family:5px normal sans-serif;
+		}
+		.img{
+			text-align:center;
+			margin:auto;
+			width:auto;
+			padding:15px;
+		
+		}
+		input{
+			width:50%;
+			padding: 12px 20px;
+			margin: auto;
+			display: inline-block;
+			border: 1px solid #ccc;
+		}
+		button{
+			background-color: grey;
+			color: white;
+			padding: 14px;
+			margin: auto;
+			border: none;
+			cursor: pointer;
+			width: 20%;
+		}
+
+		button:hover{
+		    	opacity: 0.8;
+		}
+
+		</style>
+		<script>
+			function validate()
+      			{
+				if(document.log.name.value.length<10)
+				{
+					alert("Name should be atleast 10 char");
+					document.log.name.focus();
+					return false;
+				}	
+			}
+		</script>
+	</head>
+
+	<body>
+	<h3>LOGIN</h3>
+	<form name="log" method="POST" onsubmit="validate()" action="login.php">
+			<div class="img"><img src="https://cdn4.iconfinder.com/data/icons/man-and-woman/154/hipster-man-login-fashion-skin-avatar-256.png">
+			<div class="box"><label>USERNAME : </label><input type="text" name="name" placeholder="Enter id" required></input></div>
+			<div class="box"><label>PASSWORD : </label><input type="password" name="pwd" placeholder="Enter pswd" required>	</input></div></br>	
+			<button type="submit"  onclick="login.php">Login</input></div>
+	</form>
+	</body>
+</html>
