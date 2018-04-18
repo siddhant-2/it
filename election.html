@@ -1,0 +1,91 @@
+<html>
+	<head>
+ 		<title>Election</title>
+		<style>
+		body{
+			background-color:"#f0f0f0";
+			text-align:center;
+		}
+		.box{
+			width:200px;
+			border:2px solid green;
+			margin:auto;
+			padding:14px;
+			text-align:left;
+			font-family:5px normal sans-serif;
+		}
+		</style>
+		
+		<script>
+			var xhttp=new XMLHttpRequest();
+			function getcandidatelist(){
+				if(!xhttp){
+					document.getElementById('showcandidate').innerHTML = "Request error! ajax object could not be created";
+         			return;} 
+   				xhttp.onreadystatechange = ajaxResponse;
+   				xhttp.open("GET","data.php");
+  	 			xhttp.send();
+			}
+
+			function ajaxResponse()
+				{
+ 					if (xhttp.readyState != 4) 
+   					{  return;  }
+ 					else {
+   						if (xhttp.status == 200)
+        					{
+                 				document.getElementById('showcandidate').innerHTML =
+                             			xhttp.responseText; }
+   						else {
+   				  		alert("Request failed: " + xhttp.statusText);
+ 			      	 		}
+ 					}
+				}
+
+			
+			function verification()
+			{
+			var voted_for=document.getElementById('myform').elements['candidate'].value;
+			var id="2015cse133";
+			document.getElementById('showcandidate1').innerHTML=voted_for;
+			xhttp.open("GET","update_vote_db.php?sel_candidate="+voted_for);
+			xhttp.send();
+			alert('you have successfully casted your vote!!!');
+			}
+
+			var count = 0;
+			function changeColor()
+			{
+			count++;
+			var col="#eeeefe";
+			if(count%2==0)
+				col="#eeeefe";
+			else
+				col="#eeeeee";
+			document.getElementById('showcandidate').style.backgroundColor=col;
+			}
+		</script> 
+	</head>
+
+	<body>
+
+		<h3>Election For CR</h3>
+		<h4>Select your Candidate</h4>
+		<form>
+			<input type="button" value="Get candidate list"  onclick="getcandidatelist();"/>
+			<input type="button" value="Change color"  onclick="changeColor();"/>
+		</form>
+
+		<div id="showcandidate" class="box">
+		</div>
+		<br>
+		<input type="submit" value="Submit" onclick="verification();"/>
+		<br>
+		<br>
+		<div id="showcandidate1" class="box">
+		</div>
+
+	</body>
+</html>	
+		
+			
